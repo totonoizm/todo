@@ -1,5 +1,9 @@
 <% @tasks.each do |task| %>
-  <%= task.content %>
-  <%= task.status %>
-  <%= task.limit %>
+  <div>todo内容<%= task.content %></div>
+  <div>ステータス<%= task.status %></div>
+  <div>期限<%= task.limit %></div>
+  <div>いつ投稿した？<%= task.created_at %></div>
+  <div><%= link_to "削除", task_path(task), method: :delete %></div>
 <% end %>
+
+  <div><%= link_to "タスク投稿", new_task_path %></div>
