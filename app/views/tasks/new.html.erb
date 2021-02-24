@@ -1,0 +1,7 @@
+<%= form_with model:@task, local:true do |f| %>
+  <div>予定</div>
+  <%= f.text_area :content %>
+  <%= f.text_field :status %>
+  <%= f.date_field :limit %>
+  <%= f.submit 'タスクの追加' %>
+<% end %>
