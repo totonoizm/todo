@@ -1,29 +1,30 @@
   <div class="container">
-    <div class="row"><%= link_to "タスク投稿", new_task_path %></div>
-  <div class="col-sm-6">未完了
-    <% @tasks.each do |task| %>
-      <% if task.status == 0%>
-      <div class="row">
-        <div>todo内容<%= task.content %></div>
-        <div>いつまで？<%= task.limit %></div>
-        <div>いつ投稿した？<%= task.created_at %></div>
-        <div><%= link_to "削除", task_path(task), method: :delete %></div>
-        <div><%= link_to "編集", edit_task_path(task) %></div>
-      </div>
+      <div class="row"><%= link_to "タスク投稿", new_task_path %></div>
+    <div class="row">
+    <div class="col-sm-6">未完了
+      <% @tasks.each do |task| %>
+        <% if task.status == 0%>
+          <div class="row">
+            <div>todo内容<%= task.content %></div>
+            <div>いつまで？<%= task.limit %></div>
+            <div>いつ投稿した？<%= task.created_at %></div>
+            <div><%= link_to "削除", task_path(task), method: :delete %></div>
+            <div><%= link_to "編集", edit_task_path(task) %></div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-    <div class="col-sm-6">完了
-  <% @tasks.each do |task| %>
-    <% if task.status == 1%>
-    <div>todo内容<%= task.content %></div>
     </div>
-    <div>いつまで？<%= task.limit %></div>
-    <div>いつ投稿した？<%= task.created_at %></div>
-    <div><%= link_to "削除", task_path(task), method: :delete %></div>
-    <div><%= link_to "編集", edit_task_path(task) %></div>
-    <% end %>
-  <% end %>
-  </div>
-
+    <div class="col-sm-6">完了
+      <% @tasks.each do |task| %>
+        <% if task.status == 1%>
+          <div>todo内容<%= task.content %></div>
+          </div>
+          <div>いつまで？<%= task.limit %></div>
+          <div>いつ投稿した？<%= task.created_at %></div>
+          <div><%= link_to "削除", task_path(task), method: :delete %></div>
+          <div><%= link_to "編集", edit_task_path(task) %></div>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
   </div>
