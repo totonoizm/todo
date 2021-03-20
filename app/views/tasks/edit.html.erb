@@ -1,9 +1,0 @@
-<%= form_with model:@task, local:true do |f| %>
-  <div>予定</div>
-  <%= f.text_area :content %>
-  <div>進捗</div>
-  <%= f.select :status, [["未完了", 0],["完了", 1]] %>
-  <div>いつまでにやるか</div>
-  <%= f.date_field :limit %>
-  <%= f.submit '編集完了！' %>
-<% end %>

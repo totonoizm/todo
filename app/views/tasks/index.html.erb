@@ -1,30 +1,38 @@
-  <div class="container">
-      <div class="row"><%= link_to "タスク投稿", new_task_path %></div>
-    <div class="row">
-    <div class="col-sm-6">未完了
+<div class="container">
+  <div class="row">
+    <%= form_with model:@task, local:true do |f| %>
+      <div>予定</div>
+      <%= f.text_area :content %>
+      <div>進捗</div>
+      <%= f.select :status, [["未完了", 0],["完了", 1]] %>
+      <div>期日</div>
+      <%= f.date_field :limit %>
+      <%= f.submit 'タスクの追加' %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-sm-6"><a>未完了</a>
       <% @tasks.each do |task| %>
         <% if task.status == 0%>
-          <div class="row">
-            <div>todo内容<%= task.content %></div>
+            <div><%= task.content %></div>
             <div>いつまで？<%= task.limit %></div>
             <div>いつ投稿した？<%= task.created_at %></div>
             <div><%= link_to "削除", task_path(task), method: :delete %></div>
-            <div><%= link_to "編集", edit_task_path(task) %></div>
-          </div>
+            <div><%= link_to "編集", tasks_path(id: task.id) %></div>
         <% end %>
       <% end %>
     </div>
-    <div class="col-sm-6">完了
+    <div class="col-sm-6"><a>完了済</a>
       <% @tasks.each do |task| %>
         <% if task.status == 1%>
           <div>todo内容<%= task.content %></div>
-          </div>
           <div>いつまで？<%= task.limit %></div>
-          <div>いつ投稿した？<%= task.created_at %></div>
-          <div><%= link_to "削除", task_path(task), method: :delete %></div>
-          <div><%= link_to "編集", edit_task_path(task) %></div>
+          <div class="row">いつ投稿した？<%= task.created_at %>
+          <p><%= link_to "削除", task_path(task), method: :delete %></p>
+          <p><%= link_to "編集", tasks_path(id: task.id) %></p>
+          </div>
         <% end %>
       <% end %>
     </div>
-    </div>
   </div>
+</div>
